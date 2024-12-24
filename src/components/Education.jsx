@@ -47,7 +47,7 @@ function Education() {
                         {/* 2023-2025 */}
                         <div className="w-1/3 " style={{marginTop: '124px'}}>
                             <div className="text-center">
-                                <p className="text-[#884830] font-semibold text-xl mb-4">2023-2925</p>
+                                <p className="text-[#884830] font-semibold text-xl mb-4">2023-2025</p>
                                 <div className="w-5 h-5 z-10 mt-2 bg-white rounded-full border-[1.5px] border-[#884830] mx-auto flex justify-center items-center">
                                     <div className="w-3 h-3 bg-[#884830] rounded-full mx-auto"></div>
                                 </div>
