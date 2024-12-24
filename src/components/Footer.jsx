@@ -23,14 +23,14 @@ function Footer() {
                     {/* Right Side */}
                     <div className="text-right">
                         <div className="mb-2">
-                            <a href="https://linkedin.com" className="hover:underline">LinkedIn</a>
+                            <a href="https://www.linkedin.com/in/baaziz-wissal-311a9526a/" className="hover:underline">LinkedIn</a>
                             {" / "}
-                            <a href="https://instagram.com" className="hover:underline">Instagram</a>
+                            <a href="https://www.instagram.com/baazizwissal/" className="hover:underline">Instagram</a>
                             {" / "}
-                            <a href="https://twitter.com" className="hover:underline">Twitter</a>
+                            <a href="https://x.com/baaziz_wissal?t=vHGTdTGowoQEANVtWeI1Jg&s=09" className="hover:underline">Twitter</a>
                         </div>
-                        <a href="mailto:baazizwissal12@gmail.com" className="hover:underline">
-                            baazizwissal12@gmail.com
+                        <a href="mailto:baazizwissal13@gmail.com" className="hover:underline">
+                            baazizwissal13@gmail.com
                         </a>
                     </div>
                 </div>
