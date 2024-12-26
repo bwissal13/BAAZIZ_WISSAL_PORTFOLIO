@@ -39,15 +39,7 @@ function Footer() {
                 <div className="text-center text-sm">
                     <div className="flex justify-center space-x-4">
                         <a 
-                            href="https://facebook.com/baazizwissal" 
-                            target="_blank" 
-                            rel="noopener noreferrer"
-                            className="text-white hover:text-gray-300 transition-colors"
-                        >
-                            <FontAwesomeIcon icon={faFacebook} size="lg" />
-                        </a>
-                        <a 
-                            href="https://linkedin.com/in/baazizwissal" 
+                            href="https://www.linkedin.com/in/baaziz-wissal-311a9526a/" 
                             target="_blank" 
                             rel="noopener noreferrer"
                             className="text-white hover:text-gray-300 transition-colors"
@@ -55,7 +47,7 @@ function Footer() {
                             <FontAwesomeIcon icon={faLinkedin} size="lg" />
                         </a>
                         <a 
-                            href="https://github.com/baazizwissal" 
+                            href="https://github.com/bwissal13" 
                             target="_blank" 
                             rel="noopener noreferrer"
                             className="text-white hover:text-gray-300 transition-colors"
@@ -63,7 +55,7 @@ function Footer() {
                             <FontAwesomeIcon icon={faGithub} size="lg" />
                         </a>
                         <a 
-                            href="https://instagram.com/baazizwissal" 
+                            href="https://www.instagram.com/baazizwissal/" 
                             target="_blank" 
                             rel="noopener noreferrer"
                             className="text-white hover:text-gray-300 transition-colors"
@@ -71,7 +63,7 @@ function Footer() {
                             <FontAwesomeIcon icon={faInstagram} size="lg" />
                         </a>
                         <a 
-                            href="mailto:baazizwissal12@gmail.com" 
+                            href="mailto:baazizwissal13@gmail.com" 
                             className="text-white hover:text-gray-300 transition-colors"
                         >
                             <FontAwesomeIcon icon={faEnvelope} size="lg" />

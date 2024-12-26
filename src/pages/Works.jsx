@@ -1,18 +1,31 @@
 import Header from "../components/Header";
-// import Footer from "../components/Footer"; 
+import Footer from "../components/Footer";
 import Works from "../components/works/works";
-import ProjectsImgs from "../components/works/ProjectsImgs";
+import Websites from "../components/works/Websites";
 import "../index.css";
+import { motion } from 'framer-motion';
 
-export default function Home() {
+export default function WorksPage() {
     return (
         <>
-        <div className="App">
-            <Header/>
-            <Works/>
-            <ProjectsImgs/>
-        </div>
-            {/* <Footer/> */}
+            <div className="App relative">
+                <Header/>
+                <Works/>
+                <Websites/>
+                
+                <motion.button
+                    className="fixed bottom-8 right-8 bg-[#884830] text-white p-4 rounded-full shadow-lg hover:shadow-xl"
+                    whileHover={{ scale: 1.1 }}
+                    whileTap={{ scale: 0.9 }}
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    transition={{ delay: 1 }}
+                    onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+                >
+                    ↑
+                </motion.button>
+            </div>
+            <Footer/>
         </>
     );
 }
