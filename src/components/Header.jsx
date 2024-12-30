@@ -4,7 +4,7 @@ export default function Header() {
     const [isOpen, setIsOpen] = useState(false);
 
     return (
-        <header className="header flex items-center justify-between">
+        <header className="header flex  justify-between">
             <a href="/" className="logo text-lg font-bold text-white hover:text-[#FFE4E1] transition-colors duration-300">
             BAAZIZ Wissal | Full-Stack Developer
             </a>
