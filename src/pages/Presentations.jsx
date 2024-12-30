@@ -247,7 +247,7 @@ export default function Presentations() {
                                                 ? 'bg-gradient-to-br from-[#884830] to-[#CE7857] text-white shadow-lg' 
                                                 : 'bg-white border-2 border-[#FFE5DD] text-gray-700 hover:border-[#884830]/30'
                                             } transition-all duration-300`}
-                                        whileHover={{ y: -5 }}
+                                        whileHover={{ y: -5, scale: 1.05 }}
                                         whileTap={{ scale: 0.95 }}
                                         initial={{ opacity: 0, y: 20 }}
                                         animate={{ opacity: 1, y: 0 }}
@@ -295,7 +295,7 @@ export default function Presentations() {
 
                     <div className="grid grid-cols-7 gap-6">
                         <motion.div
-                            className="bg-white rounded-xl shadow-lg overflow-hidden col-span-5"
+                            className="bg-white rounded-xl shadow-lg overflow-hidden col-span-5 relative"
                             initial={{ opacity: 0, y: 20 }}
                             animate={{ opacity: 1, y: 0 }}
                             whileHover={{ y: -5 }}
@@ -316,35 +316,11 @@ export default function Presentations() {
                                         }}
                                     />
                                 </div>
-                                
-                                <motion.div 
-                                    className="absolute bottom-4 left-1/2 transform -translate-x-1/2 flex items-center gap-4 bg-white px-4 py-1 rounded-full shadow-md"
-                                    initial={{ opacity: 0 }}
-                                    animate={{ opacity: 1 }}
-                                    transition={{ delay: 0.5 }}
-                                >
-                                    <motion.button
-                                        onClick={() => handlePageChange(Math.max(1, currentPage - 1))}
-                                        className="text-gray-600 hover:text-gray-800 disabled:text-gray-300 p-1"
-                                        disabled={currentPage === 1}
-                                        whileHover={{ scale: 1.1 }}
-                                        whileTap={{ scale: 0.9 }}
-                                    >
-                                        <FontAwesomeIcon icon={faChevronLeft} />
-                                    </motion.button>
-                                    <span className="text-xs text-gray-600 min-w-[50px] text-center font-medium">
-                                        {currentPage} / {presentations[currentPresentation].totalPages}
-                                    </span>
-                                    <motion.button
-                                        onClick={() => handlePageChange(Math.min(presentations[currentPresentation].totalPages, currentPage + 1))}
-                                        className="text-gray-600 hover:text-gray-800 disabled:text-gray-300 p-1"
-                                        disabled={currentPage === presentations[currentPresentation].totalPages}
-                                        whileHover={{ scale: 1.1 }}
-                                        whileTap={{ scale: 0.9 }}
-                                    >
-                                        <FontAwesomeIcon icon={faChevronRight} />
-                                    </motion.button>
-                                </motion.div>
+                                <div className="absolute top-0 left-1/2 transform -translate-x-1/2 text-center">
+                                    <div className="text-gray-600 text-lg mb-2 animate-bounce font-semibold drop-shadow-md">
+                                        Click to see
+                                    </div>
+                                </div>
                             </div>
                         </motion.div>
 
@@ -364,6 +340,30 @@ export default function Presentations() {
                                 Download PDF
                             </a>
                         </div>
+                    </div>
+
+                    <div className="flex justify-center mt-6">
+                        <motion.button
+                            onClick={() => handlePageChange(Math.max(1, currentPage - 1))}
+                            className="text-gray-600 hover:text-gray-800 disabled:text-gray-300 p-3 text-lg rounded-full"
+                            disabled={currentPage === 1}
+                            whileHover={{ scale: 1.1 }}
+                            whileTap={{ scale: 0.9 }}
+                        >
+                            <FontAwesomeIcon icon={faChevronLeft} />
+                        </motion.button>
+                        <span className="text-lg text-gray-600 min-w-[90px] text-center font-bold mx-4 my-2">
+                            {currentPage} / {presentations[currentPresentation].totalPages}
+                        </span>
+                        <motion.button
+                            onClick={() => handlePageChange(Math.min(presentations[currentPresentation].totalPages, currentPage + 1))}
+                            className="text-gray-600 hover:text-gray-800 disabled:text-gray-300 p-3 text-lg rounded-full"
+                            disabled={currentPage === presentations[currentPresentation].totalPages}
+                            whileHover={{ scale: 1.1 }}
+                            whileTap={{ scale: 0.9 }}
+                        >
+                            <FontAwesomeIcon icon={faChevronRight} />
+                        </motion.button>
                     </div>
 
                     {/* Modal for PDF */}
