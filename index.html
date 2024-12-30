@@ -13,9 +13,11 @@
     <div id="root"></div>
     <script type="module" src="/src/main.jsx"></script>
     <script>
-      if (window.innerWidth < 768) { 
-        window.location.href = '/mobile-not-supported.html'; // Redirect to a page that informs users
-      }
+      document.addEventListener('DOMContentLoaded', function() {
+        if (window.innerWidth < 768) { 
+          window.location.href = '/mobile-not-supported.html';
+        }
+      });
     </script>
   </body>
 </html>
