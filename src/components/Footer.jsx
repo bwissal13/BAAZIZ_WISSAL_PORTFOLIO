@@ -17,7 +17,7 @@ function Footer() {
                     {/* Left Side */}
                     <div className="flex items-center space-x-2">
                         <span>→</span>
-                        <a href="#contact" className="hover:underline">Say Hello</a>
+                        <a href="/contact" className="hover:underline">Say Hello</a>
                     </div>
 
                     {/* Right Side */}
