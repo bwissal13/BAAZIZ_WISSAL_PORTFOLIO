@@ -4,14 +4,18 @@ import Works from "../components/works/works";
 import Websites from "../components/works/Websites";
 import "../index.css";
 import { motion } from 'framer-motion';
+import StarAnimation from "../components/StarAnimation";
 
 export default function WorksPage() {
     return (
         <>
             <div className="App relative">
                 <Header/>
-                <Works/>
-                <Websites/>
+                <div className="relative">
+                    <StarAnimation />
+                    <Works/>
+                    <Websites/>
+                </div>
                 
                 <motion.button
                     className="fixed bottom-8 right-8 bg-[#884830] text-white p-4 rounded-full shadow-lg hover:shadow-xl"

@@ -1,10 +1,12 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPalette, faCode, faMagicWandSparkles, faArrowRight, faEye } from '@fortawesome/free-solid-svg-icons';
 import ProjectsImgs from './ProjectsImgs';
 
 function Works() {
+    const [isDetailsVisible, setIsDetailsVisible] = useState(false);
+
     return (
         <section className="py-10 px-4 relative overflow-hidden">
             
@@ -63,32 +65,51 @@ function Works() {
                                                  hover:bg-[#CE7857] transition-colors"
                                         whileHover={{ scale: 1.05 }}
                                         whileTap={{ scale: 0.95 }}
+                                        onClick={() => setIsDetailsVisible(!isDetailsVisible)}
                                     >
                                         <FontAwesomeIcon icon={faEye} />
-                                        View Design
+                                        {isDetailsVisible ? 'Hide Design' : 'View Design'}
                                     </motion.button>
                                 </div>
 
                                 {/* Project Preview */}
-                                <div className="relative rounded-lg overflow-hidden">
+                                <motion.div 
+                                    className="relative rounded-lg overflow-hidden"
+                                    initial={{ height: 0 }}
+                                    animate={{ height: isDetailsVisible ? 'auto' : 0 }}
+                                    transition={{ duration: 0.3 }}
+                                >
                                     <ProjectsImgs />
-                                </div>
+                                </motion.div>
                             </div>
 
                             {/* Project Details */}
                             <div className="p-8">
                                 <div className="grid grid-cols-3 gap-6 mb-6">
-                                    {['User Management', 'Role System', 'Analytics'].map((feature, index) => (
+                                    {[
+                                        {
+                                            title: 'Design System',
+                                            description: 'Comprehensive UI component library with consistent styling and reusable patterns'
+                                        },
+                                        {
+                                            title: 'Responsive Layout',
+                                            description: 'Fully adaptive interface that works seamlessly across all device sizes'
+                                        },
+                                        {
+                                            title: 'Interactive Prototypes',
+                                            description: 'High-fidelity prototypes with realistic interactions and animations'
+                                        }
+                                    ].map((feature, index) => (
                                         <motion.div 
-                                            key={feature}
+                                            key={feature.title}
                                             className="bg-[#FFE5DD]/30 p-4 rounded-lg"
                                             initial={{ opacity: 0, y: 20 }}
                                             animate={{ opacity: 1, y: 0 }}
                                             transition={{ delay: 0.6 + (index * 0.1) }}
                                         >
-                                            <h5 className="font-semibold text-[#884830] mb-2">{feature}</h5>
+                                            <h5 className="font-semibold text-[#884830] mb-2">{feature.title}</h5>
                                             <p className="text-sm text-gray-600">
-                                                Intuitive interface with real-time updates
+                                                {feature.description}
                                             </p>
                                         </motion.div>
                                     ))}

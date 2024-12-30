@@ -4,7 +4,7 @@ import { faEnvelope } from '@fortawesome/free-solid-svg-icons';
 
 function Footer() {
     return (
-        <section className="bg-[#3C3535] text-white py-16 px-8 rounded-lg my-8">
+        <section className="bg-[#3C3535] text-white py-16 px-8 rounded-lg">
             <div className="min-w-screen mx-auto">
                 {/* Main Content */}
                 <div className="mb-20">

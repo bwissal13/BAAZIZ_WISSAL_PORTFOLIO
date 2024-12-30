@@ -2,7 +2,7 @@ import React, { useState, useMemo } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faGithub } from '@fortawesome/free-brands-svg-icons';
 import { faXmark } from '@fortawesome/free-solid-svg-icons';
-import { motion } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 
 const Websites = () => {
@@ -35,24 +35,38 @@ const Websites = () => {
           image: '/citronix.png'
         },
         {
+          id: '04',
           title: 'Evento',
-          description: '',
-          tags: []
+          description: 'Evento is an innovative platform designed to simplify event discovery, reservation, and ticket generation for participants. It empowers organizers to create and manage events seamlessly while providing administrators with tools for efficient oversight. With a user-friendly interface and robust features, Evento delivers an optimal experience for all stakeholders involved.',
+          tags: ['PHP','Laravel', 'MySQL', 'Tailwind', 'JavaScript'],
+          github: 'https://github.com/bwissal13/Evento',
+          demo: 'https://evento-demo.com',
+          image: '/Evento.mp4'
+        
         },
         {
+          id: '05',
           title: 'Job Dating',
-          description: '',
-          tags: []
+          description: 'Job Dating is a platform designed to connect job seekers with potential employers. It provides a comprehensive job search interface, allowing users to browse and apply for various job listings. Employers can post job openings, manage applications, and track candidate progress.',
+          tags: ['PHP','Laravel', 'MySQL', 'Tailwind', 'JavaScript'],
+          github: 'https://github.com/bwissal13/job-dating',
+          demo: 'https://job-dating-demo.com',
+          image: '/jobDating.png'
         },
         {
+          id: '06',
           title: 'Stadium Stream',
-          description: '',
-          tags: []
+          description: 'Stadium Stream: A dynamic web application for managing and streaming live sports events, leveraging PHP, MySQL, and modern web technologies for seamless user experience.',
+          tags: ['PHP', 'MySQL', 'Tailwind', 'JavaScript'],
+          github: 'https://github.com/bwissal13/StaduimStream',
+          demo: 'https://github.com/bwissal13/StaduimStream',
+          image: '/StadiumStream.png'
         }
       ];
 
   const [activeProject, setActiveProject] = useState(0);
   const [selectedTags, setSelectedTags] = useState([]);
+  const [selectedImage, setSelectedImage] = useState(null);
 
   // Get all unique tags from projects
   const allTags = useMemo(() => {
@@ -85,14 +99,64 @@ const Websites = () => {
     threshold: 0.1
   });
 
+  const ImageModal = ({ image, onClose }) => {
+    return (
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        exit={{ opacity: 0 }}
+        className="fixed inset-0 z-50 flex items-center justify-center bg-black/80"
+        onClick={onClose}
+      >
+        <motion.div
+          initial={{ scale: 0.5 }}
+          animate={{ scale: 1 }}
+          exit={{ scale: 0.5 }}
+          className="relative max-w-7xl max-h-[90vh] mx-4"
+          onClick={e => e.stopPropagation()}
+        >
+          {image.endsWith('.mp4') ? (
+            <video
+              src={image}
+              className="max-h-[90vh] rounded-lg"
+              autoPlay
+              loop
+              muted
+              playsInline
+              controls
+            />
+          ) : (
+            <img
+              src={image}
+              alt="Project Preview"
+              className="max-h-[90vh] rounded-lg"
+            />
+          )}
+          <button
+            onClick={onClose}
+            className="absolute top-4 right-4 text-white bg-[#884830] rounded-full p-2
+                     hover:bg-[#CE7857] transition-colors"
+          >
+            <FontAwesomeIcon icon={faXmark} className="w-6 h-6" />
+          </button>
+        </motion.div>
+      </motion.div>
+    );
+  };
+
   return (
     <section className="py-16 px-4 bg-white">
       <div className="max-w-6xl mx-auto">
-        <h2 className="text-3xl font-bold text-[#CE7857] mb-4 ml-10" style={{fontFamily: 'Acme'}}>
-          Websites I've Realized
-        </h2>
-
-        <p className="text-gray-700 mb-8 max-w-3xl">
+       
+                    <motion.h3 
+                        className="text-2xl font-bold text-[#884830] mb-8" 
+                        style={{fontFamily: 'Acme', marginLeft: '90px'}}
+                        initial={{ opacity: 0, x: -20 }}
+                        animate={{ opacity: 1, x: 0 }}
+                    >
+                        Websites I've Realized
+                    </motion.h3>
+        <p className="text-gray-700 mb-8">
           Here are websites I've developed, highlighting my expertise in web development. Each project demonstrates 
           my ability to build responsive, functional, and user-friendly websites while implementing effective coding 
           practices and modern technologies.
@@ -157,17 +221,33 @@ const Websites = () => {
           {/* Project Details */}
           {filteredProjects.length > 0 && (
             <div className="lg:w-2/3">
-              <div className="relative aspect-video rounded-lg overflow-hidden mb-6 
-                            border border-[#FFE5DD]
-                            hover:border-[#884830]/30
-                            transition-all duration-300">
-                <img 
-                  src={filteredProjects[activeProject].image}
-                  alt={filteredProjects[activeProject].title}
-                  className="w-full h-full object-cover
-                           transform transition-transform duration-500 ease-in-out
-                           hover:scale-95"
-                />
+              <div 
+                className="relative aspect-video rounded-lg overflow-hidden mb-6 
+                             border border-[#FFE5DD]
+                             hover:border-[#884830]/30
+                             transition-all duration-300
+                             cursor-pointer"
+                onClick={() => setSelectedImage(filteredProjects[activeProject].image)}
+              >
+                {filteredProjects[activeProject].image.endsWith('.mp4') ? (
+                  <video 
+                    src={filteredProjects[activeProject].image}
+                    alt={filteredProjects[activeProject].title}
+                    className="w-full h-full object-cover"
+                    autoPlay
+                    loop
+                    muted
+                    playsInline
+                  />
+                ) : (
+                  <img 
+                    src={filteredProjects[activeProject].image}
+                    alt={filteredProjects[activeProject].title}
+                    className="w-full h-full object-cover
+                             transform transition-transform duration-500 ease-in-out
+                             hover:scale-95"
+                  />
+                )}
               </div>
 
               <div className="space-y-4">
@@ -207,6 +287,12 @@ const Websites = () => {
           )}
         </div>
       </div>
+      {selectedImage && (
+        <ImageModal 
+          image={selectedImage} 
+          onClose={() => setSelectedImage(null)} 
+        />
+      )}
     </section>
   );
 };
