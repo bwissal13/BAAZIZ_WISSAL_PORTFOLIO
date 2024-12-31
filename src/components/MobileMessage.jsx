@@ -34,7 +34,7 @@ function MobileMessage() {
           </p>
           <div className="flex justify-center">
             <a 
-              href="mailto:baazizwissal@gmail.com"
+              href="mailto:baazizwissal13@gmail.com"
               className="inline-flex items-center gap-2 px-6 py-3 bg-[#884830] text-white rounded-lg hover:bg-[#CE7857] transition-all duration-300 shadow-lg hover:shadow-xl"
             >
               Contact Me
