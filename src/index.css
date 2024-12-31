@@ -249,23 +249,35 @@ body {
   }
   
   @media (max-width: 768px) {
-    #root > *:not(.mobile-message) {
+    html, body {
+      overflow: hidden;
+      height: 100%;
+      position: fixed;
+      width: 100%;
+    }
+
+    #root {
+      height: 100vh;
+      overflow: hidden;
+    }
+
+    /* Hide scrollbars */
+    ::-webkit-scrollbar {
       display: none;
     }
-    .mobile-message {
-      display: block;
-      text-align: center;
-      padding: 20px;
-      background-color: #FFE5DD;
-      color: #884830;
-      border-radius: 10px;
-      margin: 20px;
+
+    * {
+      -ms-overflow-style: none;  /* IE and Edge */
+      scrollbar-width: none;  /* Firefox */
     }
   }
 
   @media (min-width: 769px) {
     .mobile-message {
       display: none;
+    }
+    .desktop-only {
+      display: block;
     }
   }
   
